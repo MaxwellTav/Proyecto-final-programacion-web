@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.0.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 11-08-2020 a las 12:16:50
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -13,19 +6,9 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `elecciones`
---
 
 DELIMITER $$
---
--- Procedimientos
---
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_por_cedula` (IN `_cedula` VARCHAR(30))  BEGIN
 
 select * from ciudadanos where cedula = _cedula;
@@ -34,10 +17,9 @@ END$$
 
 DELIMITER ;
 
--- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `administradores`
+-- Estructura `administradores`
 --
 
 CREATE TABLE `administradores` (
@@ -47,7 +29,7 @@ CREATE TABLE `administradores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `administradores`
+-- Volcado `administradores`
 --
 
 INSERT INTO `administradores` (`id`, `usuario`, `contraseña`) VALUES
@@ -56,7 +38,7 @@ INSERT INTO `administradores` (`id`, `usuario`, `contraseña`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `candidatos`
+-- Estructura `candidatos`
 --
 
 CREATE TABLE `candidatos` (
@@ -72,7 +54,7 @@ CREATE TABLE `candidatos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ciudadanos`
+-- Estructura `ciudadanos`
 --
 
 CREATE TABLE `ciudadanos` (
@@ -84,7 +66,7 @@ CREATE TABLE `ciudadanos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `ciudadanos`
+-- Volcado `ciudadanos`
 --
 
 INSERT INTO `ciudadanos` (`Cedula`, `Nombre`, `Apellido`, `Email`, `Estado`) VALUES
@@ -94,7 +76,7 @@ INSERT INTO `ciudadanos` (`Cedula`, `Nombre`, `Apellido`, `Email`, `Estado`) VAL
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `elecciones`
+-- Estructura `elecciones`
 --
 
 CREATE TABLE `elecciones` (
@@ -105,7 +87,7 @@ CREATE TABLE `elecciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `elecciones`
+-- Volcado `elecciones`
 --
 
 INSERT INTO `elecciones` (`idElecciones`, `Nombre`, `Fecha_realizacion`, `Estado`) VALUES
@@ -116,7 +98,7 @@ INSERT INTO `elecciones` (`idElecciones`, `Nombre`, `Fecha_realizacion`, `Estado
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `partidos`
+-- Estructura`partidos`
 --
 
 CREATE TABLE `partidos` (
@@ -130,7 +112,7 @@ CREATE TABLE `partidos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `puesto_electivo`
+-- Estructura`puesto_electivo`
 --
 
 CREATE TABLE `puesto_electivo` (
@@ -141,7 +123,7 @@ CREATE TABLE `puesto_electivo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `puesto_electivo`
+-- Volcado `puesto_electivo`
 --
 
 INSERT INTO `puesto_electivo` (`idPuesto_Electivo`, `Nombre`, `Descripcion`, `Estado`) VALUES
@@ -153,7 +135,7 @@ INSERT INTO `puesto_electivo` (`idPuesto_Electivo`, `Nombre`, `Descripcion`, `Es
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `registrovotos`
+-- Estructura `registrovotos`
 --
 
 CREATE TABLE `registrovotos` (
@@ -167,7 +149,7 @@ CREATE TABLE `registrovotos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `registrovotos`
+-- Volcado de `registrovotos`
 --
 
 INSERT INTO `registrovotos` (`idRegistro`, `cedulaVotante`, `nombreCandidato`, `puestoElectivo`, `partido`, `votos`, `fechaCelebracion`) VALUES
@@ -179,7 +161,7 @@ INSERT INTO `registrovotos` (`idRegistro`, `cedulaVotante`, `nombreCandidato`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `resultados`
+-- Estructura `resultados`
 --
 
 CREATE TABLE `resultados` (
@@ -196,13 +178,13 @@ CREATE TABLE `resultados` (
 --
 
 --
--- Indices de la tabla `administradores`
+-- Indices administradores`
 --
 ALTER TABLE `administradores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `candidatos`
+-- Indices`candidatos`
 --
 ALTER TABLE `candidatos`
   ADD PRIMARY KEY (`idCandidatos`),
@@ -210,84 +192,84 @@ ALTER TABLE `candidatos`
   ADD KEY `fk_puesto` (`Puesto`);
 
 --
--- Indices de la tabla `ciudadanos`
+-- Indices `ciudadanos`
 --
 ALTER TABLE `ciudadanos`
   ADD PRIMARY KEY (`Cedula`);
 
 --
--- Indices de la tabla `elecciones`
+-- Indices`elecciones`
 --
 ALTER TABLE `elecciones`
   ADD PRIMARY KEY (`idElecciones`);
 
 --
--- Indices de la tabla `partidos`
+-- Indices`partidos`
 --
 ALTER TABLE `partidos`
   ADD PRIMARY KEY (`idPartidos`);
 
 --
--- Indices de la tabla `puesto_electivo`
+-- Indices `puesto_electivo`
 --
 ALTER TABLE `puesto_electivo`
   ADD PRIMARY KEY (`idPuesto_Electivo`);
 
 --
--- Indices de la tabla `registrovotos`
+-- Indices `registrovotos`
 --
 ALTER TABLE `registrovotos`
   ADD PRIMARY KEY (`idRegistro`);
 
 --
--- Indices de la tabla `resultados`
+-- Indices `resultados`
 --
 ALTER TABLE `resultados`
   ADD PRIMARY KEY (`idResultados`),
   ADD KEY `fk_id_eleccion` (`idElecciones`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT  volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `administradores`
+-- AUTO_INCREMENT `administradores`
 --
 ALTER TABLE `administradores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `candidatos`
+-- AUTO_INCREMENT `candidatos`
 --
 ALTER TABLE `candidatos`
   MODIFY `idCandidatos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `elecciones`
+-- AUTO_INCREMENT `elecciones`
 --
 ALTER TABLE `elecciones`
   MODIFY `idElecciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `partidos`
+-- AUTO_INCREMENT partidos`
 --
 ALTER TABLE `partidos`
   MODIFY `idPartidos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT de la tabla `puesto_electivo`
+-- AUTO_INCREMENT `puesto_electivo`
 --
 ALTER TABLE `puesto_electivo`
   MODIFY `idPuesto_Electivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT de la tabla `registrovotos`
+-- AUTO_INCREMENT `registrovotos`
 --
 ALTER TABLE `registrovotos`
   MODIFY `idRegistro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `resultados`
+-- AUTO_INCREMENT  `resultados`
 --
 ALTER TABLE `resultados`
   MODIFY `idResultados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
@@ -297,19 +279,19 @@ ALTER TABLE `resultados`
 --
 
 --
--- Filtros para la tabla `candidatos`
+-- Filtros `candidatos`
 --
 ALTER TABLE `candidatos`
   ADD CONSTRAINT `vista_candidato_partido` FOREIGN KEY (`Partido`) REFERENCES `partidos` (`idPartidos`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `vista_candidato_puesto` FOREIGN KEY (`Puesto`) REFERENCES `puesto_electivo` (`idPuesto_Electivo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `resultados`
+-- Filtros  `resultados`
 --
 ALTER TABLE `resultados`
   ADD CONSTRAINT `vista_eleccion_resultado` FOREIGN KEY (`idElecciones`) REFERENCES `elecciones` (`idElecciones`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+;
+;
+;
