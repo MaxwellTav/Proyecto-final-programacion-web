@@ -1,5 +1,7 @@
 <?php
 
+
+//Requisitos de la aplicacion
 require_once "Datos/MetodoSql.php";
 require_once 'votos/VotoServiceDatabase.php';
 require_once "Datos/conexion.php";
